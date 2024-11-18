@@ -1,0 +1,28 @@
+<div class="cardbox-edit-section">
+    @if(showEditButton) {
+    <button (click)='onclick($event)' class="faEdit-btn" id="faEdit">
+        <fa-icon [icon]="faEdit"></fa-icon>
+    </button>
+    }
+    @if(showCardOptions){
+    <app-card-options class="card-options"></app-card-options>
+    }
+</div>
+
+
+<div class="cardbox-main-container">
+    <div class="cardbox-container-name">
+        <fa-icon [icon]="faTasks"></fa-icon>
+        {{cardDetail.name}}
+    </div>
+    <div class="cardbox-container-time">
+        <div class="cardbox-timesCircle-container">
+            <fa-icon [icon]="faTimesCircle"></fa-icon>
+            {{cardDetail.dueDate}}
+        </div>
+        <div class="cardbox-flag-container">
+            <fa-icon [icon]="faFlag"></fa-icon>
+            {{cardDetail.priority}}
+        </div>
+    </div>
+</div>

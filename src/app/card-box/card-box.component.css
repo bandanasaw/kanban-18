@@ -1,0 +1,134 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 220px;
+    margin: 15px 10px;
+    padding: 20px 0;
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  
+    .cardbox-edit-section {
+      position: absolute;
+      right: 0;
+      top: 10px;
+  
+  
+      .faEdit-btn {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: rgb(54, 115, 196);
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+  
+      .faEdit-btn:hover {
+        color: rgb(14, 55, 109);
+  
+      }
+  
+      .card-options {
+        background: white;
+        box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+        border-radius: 10px;
+        z-index: 1;
+        position: absolute;
+        right: 8px;
+        top: 20px;
+      }
+    }
+  
+    .cardbox-main-container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .cardbox-container-time {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+    }
+  
+    .cardbox-container-name {
+      margin: 10px;
+    }
+  }
+  
+  
+  
+  /* // :host {
+  
+  //   // &:hover {
+  //   //   background-color: lightsteelblue;
+  //   // }
+  
+  //   .cardbox-main-container {
+  //     display: flex;
+  //     flex-direction: column;
+  //     border: 1px solid lightgray;
+  //     border-radius: 10px;
+  //     width: 200px;
+  //     padding: 10px;
+  //     margin: 20px;
+  //     position: relative;
+  //   }
+  
+  //   .cardbox-main-container:hover {
+  //     // background-color: rgb(199, 209, 223);
+  //     background-color: #ddd;
+  
+  //   }
+  
+  //   .cardbox-tasks-container {
+  //     display: flex;
+  //   }
+  
+  //   .cardbox-container {
+  //     display: flex;
+  //     flex-direction: row;
+  //     justify-content: space-between;
+  //     margin: 10px;
+  //     position: relative;
+  //   } */
+  
+     .cardbox-timesCircle-container {}
+  
+     .cardbox-flag-container {}
+  
+  /* //   .faEdit-btn {
+  //     border: none;
+  //     background-color: transparent;
+  //     cursor: pointer;
+  //     color: rgb(54, 115, 196);
+  //     position: absolute;
+  //     right: -20px;
+  //     top: -20px;
+  //   } */
+  
+  /* //   .faEdit-btn:hover {
+  //     color: rgb(14, 55, 109);
+  
+  //   } */
+  
+  /* //   .edit-section  {
+  //     position: absolute;
+  //   }
+  
+  //   .card-options {
+  //     position: absolute;
+  //     // right: 60px;
+  //     right: 25px;
+  //     background: white;
+  //     box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+  //     // top: 127px;
+  //     top: 40px;
+  //     border-radius: 10px;
+  //     z-index: 1; */
+  
+  /* //   }
+  // } */
+  

@@ -1,0 +1,26 @@
+<div class="addCardForm-main-container">
+    <!-- <a *ngIf="!hideAddCardForm" (click)='hideAddCardForm = !hideAddCardForm'> Add a List.. </a> -->
+    @if(hideAddCardForm){
+    <a (click)='hideAddCard()'> Add a List.. </a>
+    }
+
+    @if(!hideAddCardForm){
+    <div class="addCardForm-container">
+        <div class="addCardForm-input-container">
+
+            <input type='text' class="addCardForm-input" placeholder="List Name" #cardname='ngModel' required
+                minlength="3" [(ngModel)]='cardName'>
+            <div>
+                @if(cardname.invalid && cardname.touched){
+                <span>List Name is required</span>
+                }
+
+            </div>
+        </div>
+        <div class="addCardForm-button-container">
+            <button class='addCardForm-add-btn' (click)='addCard(cardname)'>Add</button>
+            <button class='addCardForm-cancel-btn' (click)='cancelCard()'>Cancel</button>
+        </div>
+    </div>
+    }
+</div>

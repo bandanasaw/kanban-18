@@ -1,0 +1,25 @@
+<div class="card-main-container">
+    <div class="card-header-main-container">
+        <div class="card-header-name-container">
+            <div class="name-container">{{card.status}}</div>
+            <div class="button-container">
+                <button (click)="onClick($event)" class="faEllipsisH-btn">
+                    <fa-icon [icon]=" faEllipsisH"></fa-icon>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    @if(showAddCard) {
+    <app-add-card class='add-card-options'></app-add-card>
+    } 
+
+    <div class="card-cardbox-container">
+        @for(cardDetail of card.info;track cardDetail.id){
+        <app-card-box [cardDetail]='cardDetail'></app-card-box>
+        }
+
+    </div>
+    <app-card-input (addedCardbox)='addCardBox($event)'></app-card-input> 
+
+</div>

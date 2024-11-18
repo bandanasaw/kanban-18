@@ -1,0 +1,20 @@
+.cardOptions-main-container{
+    display: flex;
+    flex-direction: column;
+     border: 1px solid lightgray;
+    border-radius: 10px;
+    width: 151px;
+    height: 100px;
+    padding: 20px 20px 20px 20px;
+   
+}
+.cardOptions-container{
+    display: flex;
+    flex-direction: column;
+   
+  
+}
+button{
+    border: none;
+    background-color: transparent;
+}
