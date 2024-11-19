@@ -1,13 +1,13 @@
 
 .container{
     display: flex;
-    /* // border: 1px solid aquamarine; */
+    /* border: 1px solid aquamarine; */
     width: 100%;
     height: 50px;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(211, 211, 211, 0.288);
-    /* // padding: 0 20px; */
+    /* padding: 0 20px; */
 }
 .header-brandName-container{
     display: flex;

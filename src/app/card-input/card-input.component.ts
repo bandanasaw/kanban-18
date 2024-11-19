@@ -21,10 +21,9 @@ export class CardInputComponent {
   addForm() {
    // console.log(this.taskDataForm.value, this.taskDataForm);
     const name = this.taskDataForm.get('name');
-    console.log(name, name?.dirty, name?.valid, name?.touched);
+    // console.log(name, name?.dirty, name?.valid, name?.touched);
     this.addedCardbox.emit(this.taskDataForm.value);
-    console.log()
-
+    
     // console.log(this.taskForm, this.taskForm.value);
     // console.log(this.taskForm.get('name'))
   }

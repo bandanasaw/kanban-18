@@ -5,11 +5,8 @@
     </div>
     <div class="card-container">
         @for(card of cardsList; track card.keyid){
-
         <app-card [card]='card' (addedCardboxData)='cardBoxData($event)'></app-card>
         }
-        <!-- <my-app-card name='On Hold'></my-app-card>
-    <my-app-card name='InProgress'></my-app-card>
-    <my-app-card name='Done'></my-app-card> -->
+
     </div>
 </div>
