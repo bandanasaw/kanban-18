@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, input, Input, OnInit, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+// import { CardBoxComponent } from '../card-box/card-box.component';
 
 @Component({
   selector: 'app-card-options',
@@ -9,12 +10,28 @@ import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './card-options.component.html',
   styleUrl: './card-options.component.css'
 })
-export class CardOptionsComponent {
+export class CardOptionsComponent implements OnInit {
+  @Input() cardDetail :any;
+  // @Input() cardDeleted : any
+
+  @Output() cardDeleted = new EventEmitter<number>();
+
   faPenAlt = faPenAlt;
   faTrash = faTrashAlt;
-  remove() {
-      console.log('i am remove buttom clicked');
+
+  ngOnInit(): void {
+    console.log(this.cardDeleted,'---------------' )
+  }
+
+  deleteCard(index: number): void {
+    console.log('i am deleted',index)
+      this.cardDeleted.emit(index); 
+      // this.cardDeleted.emit(id); 
+    
+  }
+
+ 
 
   }
 
-}
+

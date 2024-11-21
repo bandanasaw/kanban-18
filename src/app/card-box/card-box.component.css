@@ -45,6 +45,7 @@
     .cardbox-main-container {
       display: flex;
       flex-direction: column;
+      font-family:  monospace;
     }
   
     .cardbox-container-time {

@@ -8,30 +8,31 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './add-card-form.component.html',
   styleUrl: './add-card-form.component.css',
 })
-// export class AddCardFormComponent {
 
-// }
-export class AddCardFormComponent  {
+export class AddCardFormComponent {
   hideAddCardForm: boolean = true;
 
   @Output() added: EventEmitter<string> = new EventEmitter();
   cardName: any;
   constructor() { }
-  addCard(inputRef: any){
-    console.log(this.cardName,'i am clicked', inputRef);
+
+
+  addCard(inputRef: any) {
+    console.log(this.cardName, 'i am clicked', inputRef);
     this.added.emit(this.cardName);
   }
-  cancelCard(){
-    // this.cardName = 'tinkey';
-    console.log(this.cardName,'i am cancel button');
-    this.hideAddCardForm = true;
   
+  cancelCard() {
+    // this.cardName = 'tinkey';
+    console.log( 'i am cancel button');
+    this.hideAddCardForm = true;
+
   }
-  hideAddCard(){
+  hideAddCard() {
     this.hideAddCardForm = false;
 
   }
-    
+
 
   ngOnInit(): void {
   }

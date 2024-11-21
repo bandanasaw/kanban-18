@@ -12,13 +12,19 @@ import { AddCardComponent } from "../add-card/add-card.component";
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-export class CardComponent {
+export class CardComponent implements OnInit{
   @Input() card: any;
- // @Input() cardInfo: any[] = [];
+//  @Input() cardDetail: any[] = [];
   @Output() addedCardboxData: EventEmitter<any> = new EventEmitter();
  
   faEllipsisH = faEllipsisH;
   showAddCard: boolean = false;
+
+
+  ngOnInit(): void {
+    // console.log(this.card.info,"cardsssssssssssss")
+  }
+
   onClick(e: any): void {
       this.showAddCard = true;
       e.stopPropagation();
@@ -33,4 +39,6 @@ export class CardComponent {
       console.log(cardDataInfo, 'cardDataInfo');
       this.addedCardboxData.emit({ name: this.card.status, value: cardDataInfo });
   }
+ 
+
 }

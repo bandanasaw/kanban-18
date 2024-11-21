@@ -16,7 +16,7 @@
 
     <div class="card-cardbox-container">
         @for(cardDetail of card.info;track cardDetail.id){
-        <app-card-box [cardDetail]='cardDetail'></app-card-box>
+        <app-card-box [cardDetail]='cardDetail' [card]="card"></app-card-box>
         }
 
     </div>

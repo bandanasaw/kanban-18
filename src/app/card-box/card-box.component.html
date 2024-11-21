@@ -5,7 +5,7 @@
     </button>
     }
     @if(showCardOptions){
-    <app-card-options class="card-options"></app-card-options>
+    <app-card-options class="card-options" [cardDetail]="cardDetail" (cardDeleted)="onCardDeleted($event)"></app-card-options>
     }
 </div>
 
