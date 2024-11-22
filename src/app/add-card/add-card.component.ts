@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,8 +13,17 @@ export class AddCardComponent {
   faPenAlt = faPenAlt;
   faTrash =  faTrashAlt;
 
-  remove() {
-      console.log('i am remove card');
+  @Output() sortPriority = new EventEmitter<number>();
+  @Output() sortDuedate = new EventEmitter<number>();
+
+  sortingPriority(){
+    // console.log('sorrrttt box')
+    this.sortPriority.emit();
+  }
+
+  sortingDuedate(){
+    console.log('sorting duedate')
+    this.sortDuedate.emit()
   }
 
 }

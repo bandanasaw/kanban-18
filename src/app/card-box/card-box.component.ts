@@ -28,7 +28,7 @@ export class CardBoxComponent implements OnInit {
   showCardOptions: boolean = false;
   ngOnInit(): void {
     // console.log(this.cardDetail);
-    console.log(this.card.info)
+    // console.log(this.card.info)
   }
 
   
@@ -58,12 +58,14 @@ export class CardBoxComponent implements OnInit {
   }
 
   onCardDeleted(index: number): void {
-    console.log("Removeeeeeeeeeee")
+    // console.log("Removeeeeeeeeeee")
     this.card.info.splice(index, 1); // Remove the card from the parent
-    console.log(`Card at index ${index} removed.`,"parentttttttttttt");
+    // console.log(`Card at index ${index} removed.`,"parentttttttttttt");
     // this.card.info = this.card.info.filter(() => this.card.id !== id);
     // console.log(`Card with ID ${id} removed.`);
   }
+
+
 
   // deleteCardDetail(index: number) {
   //   if (this.card.info && index > -1 && index < this.card.info.length) {

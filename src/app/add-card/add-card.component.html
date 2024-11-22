@@ -1,20 +1,25 @@
 <div class="addCard-main-container">
     <div class="addCard-container">
-        <div>
+        <!-- <div>
             <fa-icon [icon]="faPenAlt"></fa-icon>
             <button> Edit</button>
         </div>
         <div>
             <fa-icon [icon]="faTrash"></fa-icon>
             <button (click)='remove()'> Remove</button>
+        </div> -->
+        <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <button > Search</button>
+        </div> 
+
+        <div>
+            <fa-icon [icon]="faPenAlt"></fa-icon>
+            <button (click)="sortingDuedate()"> Sort by due Date</button>
         </div>
         <div>
             <fa-icon [icon]="faPenAlt"></fa-icon>
-            <button> Sort by due Date</button>
-        </div>
-        <div>
-            <fa-icon [icon]="faPenAlt"></fa-icon>
-            <button> Sort by priority </button>
+            <button (click)="sortingPriority()"> Sort by priority </button>
         </div>
     </div>
 </div>

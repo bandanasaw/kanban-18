@@ -2,6 +2,9 @@
     <div class="card-header-main-container">
         <div class="card-header-name-container">
             <div class="name-container">{{card.status}}</div>
+            <!-- <div>
+                <input type="text" class="cardInput-input-container" />
+            </div> -->
             <div class="button-container">
                 <button (click)="onClick($event)" class="faEllipsisH-btn">
                     <fa-icon [icon]=" faEllipsisH"></fa-icon>
@@ -11,12 +14,12 @@
         </div>
     </div>
     @if(showAddCard) {
-    <app-add-card class='add-card-options'></app-add-card>
+    <app-add-card class='add-card-options' (sortPriority)="onsortPriority()" (sortDuedate)="onsortDueDate()"></app-add-card>
     } 
 
     <div class="card-cardbox-container">
         @for(cardDetail of card.info;track cardDetail.id){
-        <app-card-box [cardDetail]='cardDetail' [card]="card"></app-card-box>
+        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card"></app-card-box>
         }
 
     </div>
