@@ -10,7 +10,7 @@
 
             <input type='text' class="addCardForm-input" placeholder="List Name" #cardname='ngModel' required
                 minlength="3" [(ngModel)]='cardName'>
-            <div>
+            <div class="listname-error">
                 @if(cardname.invalid && cardname.touched){
                 <span>List Name is required</span>
                 }
