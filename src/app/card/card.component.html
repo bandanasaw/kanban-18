@@ -1,21 +1,32 @@
 <div class="card-main-container">
     <div class="card-header-main-container">
-        <div class="card-header-name-container">
-            <div class="name-container">{{card.status}}</div>
-            <!-- <div>
-                <input type="text" class="cardInput-input-container" />
-            </div> -->
-            <div class="button-container">
-                <button (click)="onClick($event)" class="faEllipsisH-btn">
-                    <fa-icon [icon]=" faEllipsisH"></fa-icon>
-                </button>
+        @if(isSerachOn){
+            <div class="card-header-name-container">
+                <div class="name-container">{{card.status}}</div>
+                <div class="button-container">
+                    <button (click)="onClick($event)" class="faEllipsisH-btn">
+                        <fa-icon [icon]=" faEllipsisH"></fa-icon>
+                    </button>
+                </div>
             </div>
+        }
+       
+        @if(isSerach){
+            <div style="position: relative;">
+                <div><input type="text" placeholder="Search..." /></div>
+                <div>
+                    <button class="searchButton" (click)="searchButton()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+            
+        }
+       
 
-        </div>
     </div>
     @if(showAddCard) {
-    <app-add-card class='add-card-options' (sortPriority)="onsortPriority()" (sortDuedate)="onsortDueDate()"></app-add-card>
-    } 
+    <app-add-card class='add-card-options' (sortPriority)="onsortPriority()"
+        (sortDuedate)="onsortDueDate()" (onSearch)="onSearch()"></app-add-card>
+    }
 
     <div class="card-cardbox-container">
         @for(cardDetail of card.info;track cardDetail.id){
@@ -23,6 +34,6 @@
         }
 
     </div>
-    <app-card-input (addedCardbox)='addCardBox($event)'></app-card-input> 
+    <app-card-input (addedCardbox)='addCardBox($event)'></app-card-input>
 
 </div>

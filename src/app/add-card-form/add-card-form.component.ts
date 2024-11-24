@@ -20,6 +20,7 @@ export class AddCardFormComponent {
   addCard(inputRef: any) {
     console.log(this.cardName, 'i am clicked', inputRef);
     this.added.emit(this.cardName);
+    this.cardName = "";
   }
   
   cancelCard() {
