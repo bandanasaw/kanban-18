@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { AddCardFormComponent } from './add-card-form/add-card-form.component';
@@ -13,8 +13,9 @@ import { CardComponent } from './card/card.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   // title = 'kanban-board';
+  
 
   cardstatus: Array<string> = ['New Task', 'On Hold', 'In Progress', 'Done'];
   cardsList: any[] = [
@@ -69,7 +70,13 @@ export class AppComponent {
           ]
       },
   ]
+//   filteredCards = [...this.cardsList]
 
+  ngOnInit(): void {
+
+    // console.log(this.filteredCards[0].info,"filteredCards")
+      
+  }
 
   onAdded(name: string): void {
       console.log(name, ' I am from app component');
@@ -91,5 +98,13 @@ export class AppComponent {
       tasks.info.push(task.value);
       console.log(tasks)
   }
+
+//   filterItems(searchTerm: string): void {
+//     console.log("filteredCards")
+//     this.filteredCards = this.cardsList.filter(cardsLists =>
+//         cardsLists.name.toLowerCase().includes(searchTerm.toLowerCase())
+//     );
+//     console.log(this.filteredCards,"filteredItems")
+//   }
 
 }

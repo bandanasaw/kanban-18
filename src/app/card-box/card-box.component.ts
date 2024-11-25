@@ -13,9 +13,6 @@ import { CardOptionsComponent } from "../card-options/card-options.component";
 export class CardBoxComponent implements OnInit {
   @Input() cardDetail: any;
   @Input() card: any;
-
-
-  // @Output() cardDeleted: EventEmitter<number> = new EventEmitter<number>();
   @HostBinding('class.my-app-cardbox-class') myClass: boolean = true;
 
 
@@ -26,12 +23,9 @@ export class CardBoxComponent implements OnInit {
   // buttonDisabled : boolean = true;
   showEditButton: boolean = false;
   showCardOptions: boolean = false;
-  ngOnInit(): void {
-    // console.log(this.cardDetail);
-    // console.log(this.card.info)
-  }
 
-  
+  ngOnInit(): void { }
+
   onclick(e: any): void {
     this.showCardOptions = true;
     e.stopPropagation();
@@ -40,40 +34,21 @@ export class CardBoxComponent implements OnInit {
       document.body.removeEventListener('click', event);
     }
     document.body.addEventListener('click', event);
-
-    // console.log(e, 'i am clicked');
-
   }
 
   @HostListener('mouseenter')
   mouseOver() {
-    // console.log(' I am oon cardbox')
     this.showEditButton = true;
   }
 
   @HostListener('mouseleave')
   mouseOut() {
-    // console.log(' I am oon cardbox on out')
     this.showEditButton = false;
   }
 
+  // Remove the card from the parent
   onCardDeleted(index: number): void {
-    // console.log("Removeeeeeeeeeee")
-    this.card.info.splice(index, 1); // Remove the card from the parent
-    // console.log(`Card at index ${index} removed.`,"parentttttttttttt");
-    // this.card.info = this.card.info.filter(() => this.card.id !== id);
-    // console.log(`Card with ID ${id} removed.`);
+    this.card.info.splice(index, 1);
   }
-
-
-
-  // deleteCardDetail(index: number) {
-  //   if (this.card.info && index > -1 && index < this.card.info.length) {
-  //     this.card.info.splice(index, 1); 
-  //     console.log(`Card at index ${index} removed.`);
-  //   } else {
-  //     console.error('Invalid index or cardDetail is not defined.');
-  //   }
-  // }
 
 }

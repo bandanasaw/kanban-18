@@ -26,11 +26,11 @@ export class AddCardComponent {
   }
 
   sortingDuedate(){
-    console.log('sorting duedate')
+    // console.log('sorting duedate')
     this.sortDuedate.emit()
   }
   search(){
-    console.log("i am the search button",);
+    // console.log("i am the search button",);
     this.onSearch.emit();
   }
 
