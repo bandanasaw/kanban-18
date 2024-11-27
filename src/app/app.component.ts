@@ -96,7 +96,7 @@ export class AppComponent implements OnInit{
       const tasks = this.cardsList.find(x => x.status === task.name);
       task.value.dueDate = new Date(task.value.dueDate).toDateString();
       tasks.info.push(task.value);
-      console.log(tasks)
+      console.log(tasks,"taskkkkkkkkkk")
   }
 
 //   filterItems(searchTerm: string): void {

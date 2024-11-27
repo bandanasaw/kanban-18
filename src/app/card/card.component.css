@@ -95,5 +95,10 @@ input {
   margin-top: -26px;
   margin-left: 199px;
 }
+.listname-error {
+  /* margin-top: -18px; */
+  font-size: 13px;
+  color: red;
+}
 
 /* } */

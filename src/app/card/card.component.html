@@ -1,39 +1,55 @@
 <div class="card-main-container">
     <div class="card-header-main-container">
         @if(isSerachOn){
-            <div class="card-header-name-container">
-                <div class="name-container">{{card.status}}</div>
-                <div class="button-container">
-                    <button (click)="onClick($event)" class="faEllipsisH-btn">
-                        <fa-icon [icon]=" faEllipsisH"></fa-icon>
-                    </button>
-                </div>
+        <div class="card-header-name-container">
+            <div class="name-container">{{card.status}}</div>
+            <div class="button-container">
+                <button (click)="onClick($event)" class="faEllipsisH-btn">
+                    <fa-icon [icon]=" faEllipsisH"></fa-icon>
+                </button>
             </div>
+        </div>
         }
-       
+
         @if(isSerach){
-            <div style="position: relative;">
-                <div><input type="text" placeholder="Search..." [(ngModel)]="searchTerm" /></div>
-                <div>
-                    <button class="searchButton" (click)="searchButton()"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
+        <div style="position: relative;">
+            <div><input type="text" placeholder="Search..." [(ngModel)]="searchTerm" /></div>
+            <div class="listname-error">
+                @if( searchTerm.touched && searchTerm.invalid){
+                <span>Name is not found</span>
+                }
             </div>
-            
+            <div>
+                <button class="searchButton" (click)="searchButton()"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
         }
-       
 
     </div>
+
     @if(showAddCard) {
-    <app-add-card class='add-card-options' (sortPriority)="onsortPriority()"
-        (sortDuedate)="onsortDueDate()" (onSearch)="onSearch()"></app-add-card>
+    <app-add-card class='add-card-options' (sortPriority)="onsortPriority()" (sortDuedate)="onsortDueDate()"
+        (onSearch)="onSearch()"></app-add-card>
     }
 
+    @if(isSearchApplied) {
     <div class="card-cardbox-container">
-        @for(cardDetail of card.info;track cardDetail.id){
-        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card" ></app-card-box>
+        @for(cardDetail of filteredCards;track cardDetail){
+        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card"></app-card-box>
         }
 
     </div>
-    <app-card-input (addedCardbox)='addCardBox($event)'></app-card-input>
+    } @else {
+    <div class="card-cardbox-container">
+        @for(cardDetail of card.info;track cardDetail.id){
+        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card"></app-card-box>
+        }
+    </div>
 
+    }
+
+ <div style="margin-top: 15px;margin-bottom: 10px;">
+    <app-card-input (addedCardbox)='addCardBox($event)'></app-card-input>
+ </div>
 </div>

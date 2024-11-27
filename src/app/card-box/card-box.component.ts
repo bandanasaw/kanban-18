@@ -2,15 +2,17 @@ import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Outp
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTasks, faClock, faFlag, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { CardOptionsComponent } from "../card-options/card-options.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-card-box',
   standalone: true,
-  imports: [FontAwesomeModule, CardOptionsComponent],
+  imports: [FontAwesomeModule, CardOptionsComponent, FormsModule],
   templateUrl: './card-box.component.html',
   styleUrl: './card-box.component.css'
 })
 export class CardBoxComponent implements OnInit {
+  // options: Intl.DateTimeFormatOptions = { weekday: 'short',month: 'short', year: 'numeric', day: 'numeric' };
   @Input() cardDetail: any;
   @Input() card: any;
   @HostBinding('class.my-app-cardbox-class') myClass: boolean = true;
@@ -23,6 +25,7 @@ export class CardBoxComponent implements OnInit {
   // buttonDisabled : boolean = true;
   showEditButton: boolean = false;
   showCardOptions: boolean = false;
+  isEditButtonClick: boolean = true;
 
   ngOnInit(): void { }
 
@@ -49,6 +52,22 @@ export class CardBoxComponent implements OnInit {
   // Remove the card from the parent
   onCardDeleted(index: number): void {
     this.card.info.splice(index, 1);
+  }
+
+  onEdit() {
+    this.isEditButtonClick = false;
+  }
+
+  updateEdit(e: any) {
+    const formattedDate = new Date(this.cardDetail.dueDate).toDateString();
+    this.cardDetail.dueDate = formattedDate;
+
+    console.log('Updated card:', this.cardDetail);
+    this.isEditButtonClick = true;
+  }
+
+  cancel(e: any) {
+    this.isEditButtonClick = true;
   }
 
 }

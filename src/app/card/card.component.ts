@@ -5,7 +5,7 @@ import { CardInputComponent } from "../card-input/card-input.component";
 import { CardBoxComponent } from "../card-box/card-box.component";
 import { AddCardComponent } from "../add-card/add-card.component";
 import { FormsModule } from '@angular/forms';
-// import { SearchPipe } from '../search.pipe';
+
 
 @Component({
   selector: 'app-card',
@@ -18,19 +18,19 @@ export class CardComponent implements OnInit {
   @Input() card: any;
   // @Input() cardDetail: any;
   @Output() addedCardboxData: EventEmitter<any> = new EventEmitter();
-  // @Output() searchEvent = new EventEmitter<string>();
 
-  searchTerm: string = '';
-  filteredCard: string[] = [];
 
+  // searchTerm: string = '';
+  searchTerm: any;
+  filteredCards: string[] = [];
   faEllipsisH = faEllipsisH;
   showAddCard: boolean = false;
   isSerachOn: boolean = true;
   isSerach: boolean = false;
+  isSearchApplied: boolean = false;
 
   ngOnInit(): void {
-    console.log(this.card.info[0].name, "cardsssssssssssss")
-    console.log(this.filteredCard)
+    // console.log(this.card.info[0].name, "cardsssssssssssss")
   }
 
   onClick(e: any): void {
@@ -71,15 +71,14 @@ export class CardComponent implements OnInit {
   }
 
   searchButton(): void {
-    console.log('i am serach burtton')
-
-    const filteredCards = this.card.info.filter((item: any, index: string | number) =>
-      // item.name.includes(this.searchTerm)
+    if(String(this.searchTerm) !="null" && String(this.searchTerm).length < 3){
+      return;
+    }
+    this.isSearchApplied = true
+    this.filteredCards = this.card.info.filter((item: any) =>
       item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-    console.log(filteredCards, "filteredCards")
-    this.filteredCard.push(filteredCards)
-    console.log(this.filteredCard, "filteredCardddddddddddddddd")
+    this.searchTerm ='';
   }
 
 }

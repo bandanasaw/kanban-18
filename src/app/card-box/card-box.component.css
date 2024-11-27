@@ -1,67 +1,116 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    max-width: 220px;
-    margin: 15px 10px;
-    padding: 20px 0;
-    box-sizing: border-box;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-  
-    .cardbox-edit-section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  margin: 15px 10px;
+  padding: 20px 0;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+
+  .cardbox-edit-section {
+    position: absolute;
+    right: 0;
+    top: 10px;
+
+
+    .faEdit-btn {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      color: rgb(54, 115, 196);
       position: absolute;
       right: 0;
-      top: 10px;
-  
-  
-      .faEdit-btn {
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        color: rgb(54, 115, 196);
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-  
-      .faEdit-btn:hover {
-        color: rgb(14, 55, 109);
-  
-      }
-  
-      .card-options {
-        background: white;
-        box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-        border-radius: 10px;
-        z-index: 1;
-        position: absolute;
-        right: 8px;
-        top: 20px;
-      }
+      top: 0;
     }
-  
-    .cardbox-main-container {
-      display: flex;
-      flex-direction: column;
-      font-family:  monospace;
+
+    .faEdit-btn:hover {
+      color: rgb(14, 55, 109);
+
     }
-  
-    .cardbox-container-time {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px;
-    }
-  
-    .cardbox-container-name {
-      margin: 10px;
+
+    .card-options {
+      background: white;
+      box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+      border-radius: 10px;
+      z-index: 1;
+      position: absolute;
+      right: 8px;
+      top: 20px;
     }
   }
-  
-  
-  
-  /* // :host {
+
+  .cardbox-main-container {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+  }
+
+  .cardbox-container-time {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+  }
+
+  .cardbox-container-name {
+    margin: 10px;
+  }
+
+  .cardbox-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    /* align-items: self-end; */
+    margin: 10px;
+
+  }
+
+  input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
+
+  select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
+
+  .update-btn {
+    display: flex;
+    width: 50px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    /* color: white; */
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-right: 15px;
+
+  }
+
+  .cancel-btn {
+    display: flex;
+    width: 65px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-right: 15px;
+
+  }
+}
+
+
+
+/* // :host {
   
   //   // &:hover {
   //   //   background-color: lightsteelblue;
@@ -95,12 +144,12 @@
   //     margin: 10px;
   //     position: relative;
   //   } */
-  
-     .cardbox-timesCircle-container {}
-  
-     .cardbox-flag-container {}
-  
-  /* //   .faEdit-btn {
+
+.cardbox-timesCircle-container {}
+
+.cardbox-flag-container {}
+
+/* //   .faEdit-btn {
   //     border: none;
   //     background-color: transparent;
   //     cursor: pointer;
@@ -109,13 +158,13 @@
   //     right: -20px;
   //     top: -20px;
   //   } */
-  
-  /* //   .faEdit-btn:hover {
+
+/* //   .faEdit-btn:hover {
   //     color: rgb(14, 55, 109);
   
   //   } */
-  
-  /* //   .edit-section  {
+
+/* //   .edit-section  {
   //     position: absolute;
   //   }
   
@@ -129,7 +178,6 @@
   //     top: 40px;
   //     border-radius: 10px;
   //     z-index: 1; */
-  
-  /* //   }
+
+/* //   }
   // } */
-  

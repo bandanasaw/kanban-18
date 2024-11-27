@@ -15,6 +15,7 @@ export class CardOptionsComponent implements OnInit {
   // @Input() cardDeleted : any
 
   @Output() cardDeleted = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<boolean>();
 
 
   faPenAlt = faPenAlt;
@@ -23,16 +24,15 @@ export class CardOptionsComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.cardDeleted, '---------------')
   }
+  editButton(e: any){
+    this.edit.emit();
+  }
 
   deleteCard(index: number): void {
-    // console.log('i am deleted', index)
     this.cardDeleted.emit(index);
     // this.cardDeleted.emit(id); 
 
   }
-
- 
-
 
 }
 
