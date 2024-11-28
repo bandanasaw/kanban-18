@@ -32,18 +32,18 @@
     <div class="cardbox-container-name">
         <fa-icon [icon]="faTasks"></fa-icon>
 
-        <input type="text" placeholder="name" [value]=cardDetail.name  [(ngModel)]="cardDetail.name"/>
+        <input type="text" placeholder="name" [(ngModel)]="cardDetail.name"/>
     </div>
     <div class="cardbox-container-time">
         <div class="cardbox-timesCircle-container">
             <fa-icon [icon]="faTimesCircle"></fa-icon>
 
-            <input type="date" [value]=cardDetail.dueDate   [(ngModel)]="cardDetail.dueDate"/>
+            <input type="date" [(ngModel)]="cardDetail.dueDate"  id="dateInput"/>
         </div>
         <div class="cardbox-flag-container">
             <fa-icon [icon]="faFlag"></fa-icon>
 
-            <select [value]=cardDetail.priority [(ngModel)]="cardDetail.priority">
+            <select [(ngModel)]="cardDetail.priority">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

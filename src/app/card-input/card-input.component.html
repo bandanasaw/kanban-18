@@ -15,7 +15,7 @@
               
             </div>
             <div class="cardInput-input-container">
-                <input type="date" formControlName='dueDate'>
+                <input type="date" formControlName='dueDate' id="dateInput">
                 @if(taskDataForm.get('duedate')?.invalid && taskDataForm.get('dueDate')?.touched){
                     <span >select the
                         date</span>
