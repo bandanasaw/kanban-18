@@ -1,64 +1,65 @@
-<div class="cardbox-edit-section">
-    @if(showEditButton) {
-    <button (click)='onclick($event)' class="faEdit-btn" id="faEdit">
-        <fa-icon [icon]="faEdit"></fa-icon>
-    </button>
+<div (mouseenter)="mouseOver()" (mouseleave)="mouseOut()">
+    <div class="cardbox-edit-section">
+        @if(showEditButton()) {
+        <button (click)='onclick($event)' class="faEdit-btn" id="faEdit">
+            <fa-icon [icon]="faEdit"></fa-icon>
+        </button>
+        }
+        @if(showCardOptions()){
+        <app-card-options class="card-options" [cardDetail]="cardDetail" (cardDeleted)="onCardDeleted($event)"
+            (edit)="onEdit()"></app-card-options>
+        }
+    </div>
+
+    @if(isEditButtonClick()){
+    <div class="cardbox-main-container">
+        <div class="cardbox-container-name">
+            <fa-icon [icon]="faTasks"></fa-icon>
+            {{cardDetail.name}}
+        </div>
+        <div class="cardbox-container-time">
+            <div class="cardbox-timesCircle-container">
+                <fa-icon [icon]="faTimesCircle"></fa-icon>
+                {{cardDetail.dueDate}}
+            </div>
+            <div class="cardbox-flag-container">
+                <fa-icon [icon]="faFlag"></fa-icon>
+                {{cardDetail.priority}}
+            </div>
+        </div>
+    </div>
+    } @else {
+    <div class="cardbox-main-container">
+        <div class="cardbox-container-name">
+            <fa-icon [icon]="faTasks"></fa-icon>
+
+            <input type="text" placeholder="name" [(ngModel)]="cardDetail.name" />
+        </div>
+        <div class="cardbox-container-time">
+            <div class="cardbox-timesCircle-container">
+                <fa-icon [icon]="faTimesCircle"></fa-icon>
+
+                <input type="date" [(ngModel)]="cardDetail.dueDate" id="dateInput" />
+            </div>
+            <div class="cardbox-flag-container">
+                <fa-icon [icon]="faFlag"></fa-icon>
+
+                <select [(ngModel)]="cardDetail.priority">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
+
+            </div>
+        </div>
+        <div class="cardbox-button">
+            <button class="update-btn" (click)="updateEdit()">Update</button>
+            <button class="cancel-btn" (click)="cancel($event)">Cancel</button>
+        </div>
+    </div>
     }
-    @if(showCardOptions){
-    <app-card-options class="card-options" [cardDetail]="cardDetail"
-        (cardDeleted)="onCardDeleted($event)" (edit)="onEdit()"></app-card-options>
-    }
+
 </div>
-
-@if(isEditButtonClick){
-<div class="cardbox-main-container">
-    <div class="cardbox-container-name">
-        <fa-icon [icon]="faTasks"></fa-icon>
-        {{cardDetail.name}}
-    </div>
-    <div class="cardbox-container-time">
-        <div class="cardbox-timesCircle-container">
-            <fa-icon [icon]="faTimesCircle"></fa-icon>
-            {{cardDetail.dueDate}}
-        </div>
-        <div class="cardbox-flag-container">
-            <fa-icon [icon]="faFlag"></fa-icon>
-            {{cardDetail.priority}}
-        </div>
-    </div>
-</div>
-} @else {
-<div class="cardbox-main-container">
-    <div class="cardbox-container-name">
-        <fa-icon [icon]="faTasks"></fa-icon>
-
-        <input type="text" placeholder="name" [(ngModel)]="cardDetail.name"/>
-    </div>
-    <div class="cardbox-container-time">
-        <div class="cardbox-timesCircle-container">
-            <fa-icon [icon]="faTimesCircle"></fa-icon>
-
-            <input type="date" [(ngModel)]="cardDetail.dueDate"  id="dateInput"/>
-        </div>
-        <div class="cardbox-flag-container">
-            <fa-icon [icon]="faFlag"></fa-icon>
-
-            <select [(ngModel)]="cardDetail.priority">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-
-            </select>
-
-        </div>
-    </div>
-    <div class="cardbox-button">
-        <button  class="update-btn" (click)="updateEdit($event)">Update</button>
-        <button  class="cancel-btn" (click)="cancel($event)">Cancel</button>
-    </div>
-</div>
-}
-
-

@@ -1,6 +1,6 @@
 <div class="card-main-container">
     <div class="card-header-main-container">
-        @if(isSerachOn){
+        @if(isSerachOn()){
         <div class="card-header-name-container">
             <div class="name-container">{{card.status}}</div>
             <div class="button-container">
@@ -11,7 +11,7 @@
         </div>
         }
 
-        @if(isSerach){
+        @if(isSerach()){
         <div style="position: relative;">
             <div><input type="text" placeholder="Search..." [(ngModel)]="searchTerm" /></div>
             <div class="listname-error">
@@ -28,12 +28,12 @@
 
     </div>
 
-    @if(showAddCard) {
+    @if(showAddCard()) {
     <app-add-card class='add-card-options' (sortPriority)="onsortPriority()" (sortDuedate)="onsortDueDate()"
         (onSearch)="onSearch()"></app-add-card>
     }
 
-    @if(isSearchApplied) {
+    @if(isSearchApplied()) {
     <div class="card-cardbox-container">
         @for(cardDetail of filteredCards;track cardDetail){
         <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card"></app-card-box>

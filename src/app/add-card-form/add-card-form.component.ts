@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,22 +10,24 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class AddCardFormComponent {
-  hideAddCardForm: boolean = true;
+  hideAddCardForm = signal<boolean>(true);
 
   @Output() added: EventEmitter<string> = new EventEmitter();
   cardName: any;
  
   addCard(inputRef: any) {
+    //  this.cardName = "";
     this.added.emit(this.cardName);
-    this.cardName = "";
+    this.hideAddCardForm.set(true);
+   
   }
 
   cancelCard() {
-    this.hideAddCardForm = true;
+    this.hideAddCardForm.set(true);
 
   }
   hideAddCard() {
-    this.hideAddCardForm = false;
+    this.hideAddCardForm.set(false);
 
   }
 }

@@ -16,6 +16,7 @@ export class CardOptionsComponent implements OnInit {
 
   @Output() cardDeleted = new EventEmitter<number>();
   @Output() edit = new EventEmitter<boolean>();
+  @Output() move = new EventEmitter<string>();
 
 
   faPenAlt = faPenAlt;
@@ -31,6 +32,11 @@ export class CardOptionsComponent implements OnInit {
   deleteCard(index: number): void {
     this.cardDeleted.emit(index);
     // this.cardDeleted.emit(id); 
+
+  }
+  moveToOnHold(){
+    console.log('i am moving button',this.cardDetail)
+    this.move.emit();
 
   }
 

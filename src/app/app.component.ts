@@ -70,7 +70,9 @@ export class AppComponent implements OnInit {
   ]
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    console.log(this.cardsList[0].status,"card")
+  }
 
   onAdded(name: string): void {
     // console.log(name, ' I am from app component');
@@ -87,9 +89,9 @@ export class AppComponent implements OnInit {
   cardBoxData(task: any): void {
 
     const tasks = this.cardsList.find(x => x.status === task.name);
+    console.log(tasks,"taskssssssssss")
     task.value.dueDate = new Date(task.value.dueDate).toDateString();
     tasks.info.push(task.value);
 
   }
-
 }

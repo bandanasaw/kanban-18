@@ -107,15 +107,18 @@
 
   }
 
-  #dateInput::-webkit-datetime-edit {
+  /* Makes the placeholder invisible */
+  /* #dateInput::-webkit-datetime-edit {
     color: transparent;
-    /* Makes the placeholder invisible */
-  }
+    
+  } */
 
-  #dateInput:focus::-webkit-datetime-edit {
+
+ /* Makes the text visible on focus */
+  /* #dateInput:focus::-webkit-datetime-edit {
     color: initial;
-    /* Makes the text visible on focus */
-  }
+   
+  } */
 
 
 }

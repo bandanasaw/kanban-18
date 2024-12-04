@@ -9,7 +9,7 @@ import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators }
   styleUrl: './card-input.component.css'
 })
 export class CardInputComponent {
-  hideCardInputForm: boolean = true;
+  hideCardInputForm = signal<boolean>(true);
 
   @Output() addedCardbox: EventEmitter<any> = new EventEmitter();
   taskDataForm: UntypedFormGroup = new UntypedFormGroup(
@@ -25,17 +25,17 @@ export class CardInputComponent {
 
     this.addedCardbox.emit(this.taskDataForm.value);
     this.taskDataForm.reset();
-    this.hideCardInputForm = true;
+    this.hideCardInputForm.set(true);
 
   }
   cancelForm() {
     console.log('i am cancel button clicked')
-    this.hideCardInputForm = true;
+    this.hideCardInputForm.set(true);
     this.taskDataForm.reset();
 
   }
   hideCardInput() {
-    this.hideCardInputForm = false;
+    this.hideCardInputForm.set(false);
   }
 
 }

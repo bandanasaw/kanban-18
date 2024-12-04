@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { CardInputComponent } from "../card-input/card-input.component";
@@ -24,20 +24,20 @@ export class CardComponent implements OnInit {
   searchTerm: any;
   filteredCards: string[] = [];
   faEllipsisH = faEllipsisH;
-  showAddCard: boolean = false;
-  isSerachOn: boolean = true;
-  isSerach: boolean = false;
-  isSearchApplied: boolean = false;
+  showAddCard = signal<boolean>(false);
+  isSerachOn= signal<boolean>(true);
+  isSerach= signal<boolean>(false);
+  isSearchApplied= signal<boolean>(false);
 
   ngOnInit(): void {
     // console.log(this.card.info[0].name, "cardsssssssssssss")
   }
 
   onClick(e: any): void {
-    this.showAddCard = true;
+    this.showAddCard.set(true); 
     e.stopPropagation();
     const event = () => {
-      this.showAddCard = false;
+      this.showAddCard.set(false);
       document.body.removeEventListener('click', event);
     }
     document.body.addEventListener('click', event);
@@ -66,15 +66,15 @@ export class CardComponent implements OnInit {
   }
 
   onSearch() {
-    this.isSerachOn = false;
-    this.isSerach = true;
+    this.isSerachOn.set(false); 
+    this.isSerach.set(true); 
   }
 
   searchButton(): void {
     if(String(this.searchTerm) !="null" && String(this.searchTerm).length < 3){
       return;
     }
-    this.isSearchApplied = true
+    this.isSearchApplied.set(true);
     this.filteredCards = this.card.info.filter((item: any) =>
       item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
