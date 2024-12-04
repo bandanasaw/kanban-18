@@ -2,7 +2,7 @@
     <div class="card-header-main-container">
         @if(isSerachOn()){
         <div class="card-header-name-container">
-            <div class="name-container">{{card.status}}</div>
+            <div class="name-container">{{card().status}}</div>
             <div class="button-container">
                 <button (click)="onClick($event)" class="faEllipsisH-btn">
                     <fa-icon [icon]=" faEllipsisH"></fa-icon>
@@ -36,14 +36,14 @@
     @if(isSearchApplied()) {
     <div class="card-cardbox-container">
         @for(cardDetail of filteredCards;track cardDetail){
-        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card"></app-card-box>
+        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card()"></app-card-box>
         }
 
     </div>
     } @else {
     <div class="card-cardbox-container">
-        @for(cardDetail of card.info;track cardDetail.id){
-        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card"></app-card-box>
+        @for(cardDetail of card().info;track cardDetail.id){
+        <app-card-box draggable="true" [cardDetail]='cardDetail' [card]="card()"></app-card-box>
         }
     </div>
 

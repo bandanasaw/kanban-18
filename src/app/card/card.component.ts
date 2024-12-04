@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, signal, input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { CardInputComponent } from "../card-input/card-input.component";
@@ -8,14 +8,13 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-card',
-  standalone: true,
-  imports: [FontAwesomeModule, CardInputComponent, CardBoxComponent, AddCardComponent, FormsModule],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+    selector: 'app-card',
+    imports: [FontAwesomeModule, CardInputComponent, CardBoxComponent, AddCardComponent, FormsModule],
+    templateUrl: './card.component.html',
+    styleUrl: './card.component.css'
 })
 export class CardComponent implements OnInit {
-  @Input() card: any;
+  readonly card = input<any>();
   // @Input() cardDetail: any;
   @Output() addedCardboxData: EventEmitter<any> = new EventEmitter();
 
@@ -45,20 +44,20 @@ export class CardComponent implements OnInit {
 
   addCardBox(cardDataInfo: any) {
     console.log('cardDataInfo');
-    this.addedCardboxData.emit({ name: this.card.status, value: cardDataInfo });
+    this.addedCardboxData.emit({ name: this.card().status, value: cardDataInfo });
 
   }
 
 
   // Sort the array in ascending order of priority
   onsortPriority(): void {
-    this.card.info.sort((a: any, b: any) => a.priority - b.priority);
+    this.card().info.sort((a: any, b: any) => a.priority - b.priority);
   }
 
 
   // Sort the array in ascending order of dueDate
   onsortDueDate(): void {
-    this.card.info.sort((a: any, b: any) => {
+    this.card().info.sort((a: any, b: any) => {
       const dateA = new Date(a.dueDate).getTime();
       const dateB = new Date(b.dueDate).getTime();
       return dateA - dateB;
@@ -75,7 +74,7 @@ export class CardComponent implements OnInit {
       return;
     }
     this.isSearchApplied.set(true);
-    this.filteredCards = this.card.info.filter((item: any) =>
+    this.filteredCards = this.card().info.filter((item: any) =>
       item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
     this.searchTerm ='';

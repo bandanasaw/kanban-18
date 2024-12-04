@@ -1,20 +1,19 @@
-import { Component, Input, signal, computed, effect, HostListener, OnInit } from '@angular/core';
+import { Component, signal, computed, effect, HostListener, OnInit, input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTasks, faClock, faFlag, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { CardOptionsComponent } from "../card-options/card-options.component";
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-card-box',
-  standalone: true,
-  imports: [FontAwesomeModule, CardOptionsComponent, FormsModule],
-  templateUrl: './card-box.component.html',
-  styleUrl: './card-box.component.css'
+    selector: 'app-card-box',
+    imports: [FontAwesomeModule, CardOptionsComponent, FormsModule],
+    templateUrl: './card-box.component.html',
+    styleUrl: './card-box.component.css'
 })
 export class CardBoxComponent implements OnInit{
 
-  @Input() cardDetail: any;
-  @Input() card: any;
+  readonly cardDetail = input<any>();
+  readonly card = input<any>();
 
   faTasks = faTasks;
   faTimesCircle = faClock;
@@ -57,7 +56,7 @@ export class CardBoxComponent implements OnInit{
   }
 
   onCardDeleted(index: number): void {
-    this.card.info.splice(index, 1);
+    this.card().info.splice(index, 1);
   }
 
   onEdit() {
@@ -66,14 +65,18 @@ export class CardBoxComponent implements OnInit{
 
     cancel(e: any) {
     this.isEditButtonClick.set(true);
+    this.showEditButton.set(false);
   }
 
   updateEdit() {
-    const formattedDate = new Date(this.cardDetail.dueDate).toDateString();
-    this.cardDetail.dueDate = formattedDate;
+    const formattedDate = new Date(this.cardDetail().dueDate).toDateString();
+    // const cardDetail = this.cardDetail();
+    this.cardDetail().dueDate = formattedDate;
 
-    console.log('Updated card:', this.cardDetail);
+    console.log('Updated card:', this.cardDetail());
     this.isEditButtonClick.set(true);
+    this.showEditButton.set(false);
+    
     // this.inputValue.set(this.cardDetail);
     // this.task.set([...this.task(), this.inputValue()]);
     // console.log(this.task(), "Updated Tasks");

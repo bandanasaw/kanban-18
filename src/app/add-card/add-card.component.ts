@@ -5,11 +5,10 @@ import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { CardComponent } from '../card/card.component';
 
 @Component({
-  selector: 'app-add-card',
-  standalone: true,
-  imports: [FontAwesomeModule],
-  templateUrl: './add-card.component.html',
-  styleUrl: './add-card.component.css'
+    selector: 'app-add-card',
+    imports: [FontAwesomeModule],
+    templateUrl: './add-card.component.html',
+    styleUrl: './add-card.component.css'
 })
 export class AddCardComponent {
   faPenAlt = faPenAlt;

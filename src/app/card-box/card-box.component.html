@@ -6,7 +6,7 @@
         </button>
         }
         @if(showCardOptions()){
-        <app-card-options class="card-options" [cardDetail]="cardDetail" (cardDeleted)="onCardDeleted($event)"
+        <app-card-options class="card-options" [cardDetail]="cardDetail()" (cardDeleted)="onCardDeleted($event)"
             (edit)="onEdit()"></app-card-options>
         }
     </div>
@@ -15,16 +15,16 @@
     <div class="cardbox-main-container">
         <div class="cardbox-container-name">
             <fa-icon [icon]="faTasks"></fa-icon>
-            {{cardDetail.name}}
+            {{cardDetail().name}}
         </div>
         <div class="cardbox-container-time">
             <div class="cardbox-timesCircle-container">
                 <fa-icon [icon]="faTimesCircle"></fa-icon>
-                {{cardDetail.dueDate}}
+                {{cardDetail().dueDate}}
             </div>
             <div class="cardbox-flag-container">
                 <fa-icon [icon]="faFlag"></fa-icon>
-                {{cardDetail.priority}}
+                {{cardDetail().priority}}
             </div>
         </div>
     </div>
@@ -33,18 +33,18 @@
         <div class="cardbox-container-name">
             <fa-icon [icon]="faTasks"></fa-icon>
 
-            <input type="text" placeholder="name" [(ngModel)]="cardDetail.name" />
+            <input type="text" placeholder="name" [(ngModel)]="cardDetail().name" />
         </div>
         <div class="cardbox-container-time">
             <div class="cardbox-timesCircle-container">
                 <fa-icon [icon]="faTimesCircle"></fa-icon>
 
-                <input type="date" [(ngModel)]="cardDetail.dueDate" id="dateInput" />
+                <input type="date" [(ngModel)]="cardDetail().dueDate" id="dateInput" />
             </div>
             <div class="cardbox-flag-container">
                 <fa-icon [icon]="faFlag"></fa-icon>
 
-                <select [(ngModel)]="cardDetail.priority">
+                <select [(ngModel)]="cardDetail().priority">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -62,4 +62,3 @@
     </div>
     }
 
-</div>

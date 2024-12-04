@@ -2,11 +2,10 @@ import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-card-input',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './card-input.component.html',
-  styleUrl: './card-input.component.css'
+    selector: 'app-card-input',
+    imports: [ReactiveFormsModule],
+    templateUrl: './card-input.component.html',
+    styleUrl: './card-input.component.css'
 })
 export class CardInputComponent {
   hideCardInputForm = signal<boolean>(true);

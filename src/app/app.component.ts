@@ -5,11 +5,10 @@ import { AddCardFormComponent } from './add-card-form/add-card-form.component';
 import { CardComponent } from './card/card.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, AddCardFormComponent, CardComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [HeaderComponent, AddCardFormComponent, CardComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   // title = 'kanban-board';

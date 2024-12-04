@@ -1,17 +1,16 @@
-import { Component, EventEmitter, input, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, input, OnInit, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 // import { CardBoxComponent } from '../card-box/card-box.component';
 
 @Component({
-  selector: 'app-card-options',
-  standalone: true,
-  imports: [FontAwesomeModule],
-  templateUrl: './card-options.component.html',
-  styleUrl: './card-options.component.css'
+    selector: 'app-card-options',
+    imports: [FontAwesomeModule],
+    templateUrl: './card-options.component.html',
+    styleUrl: './card-options.component.css'
 })
 export class CardOptionsComponent implements OnInit {
-  @Input() cardDetail: any;
+  readonly cardDetail = input<any>();
   // @Input() cardDeleted : any
 
   @Output() cardDeleted = new EventEmitter<number>();
@@ -35,7 +34,7 @@ export class CardOptionsComponent implements OnInit {
 
   }
   moveToOnHold(){
-    console.log('i am moving button',this.cardDetail)
+    console.log('i am moving button',this.cardDetail())
     this.move.emit();
 
   }
