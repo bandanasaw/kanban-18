@@ -3,18 +3,24 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { AddCardFormComponent } from './add-card-form/add-card-form.component';
 import { CardComponent } from './card/card.component';
+// import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api.service';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+
+
 
 @Component({
-    selector: 'app-root',
-    imports: [HeaderComponent, AddCardFormComponent, CardComponent],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css'
+  selector: 'app-root',
+  imports: [HeaderComponent, AddCardFormComponent, CardComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
+
   // title = 'kanban-board';
+  constructor(private apiService: ApiService) {}
 
-
-  cardstatus: Array<string> = ['New Task', 'On Hold', 'In Progress', 'Done'];
+  // cardstatus: Array<string> = ['New Task', 'On Hold', 'In Progress', 'Done'];
   cardsList: any[] = [
     {
       keyid: 1,
@@ -68,13 +74,39 @@ export class AppComponent implements OnInit {
     },
   ]
 
+  data:any;
 
-  ngOnInit(): void { 
-    console.log(this.cardsList[0].status,"card")
+
+  ngOnInit(): void {  
+    this.fetchCardData();
+    // console.log(this.cardsList[0].status,"card")
+
+    // Fetch data on initialization
+    // this.apiService.getData().subscribe(response => {
+    //   this.cardsList = response;
+    // });
+
+    // Method to post data
+    // submitData(newData: any) {
+    //   this.apiService.postData(newData).subscribe(response => {
+    //     console.log('Data submitted:', response);
+    //   });
+    // }
+  }
+
+  fetchCardData() {
+    this.apiService.getData().subscribe({
+      next: (response) => {
+        this.data = response;
+        console.log('Data fetched successfully:', response);
+      },
+      error: (error) => {
+        console.error('Error fetching data:', error);
+      },
+    });
   }
 
   onAdded(name: string): void {
-    // console.log(name, ' I am from app component');
     this.cardsList.push(
       {
         status: name,
@@ -88,9 +120,14 @@ export class AppComponent implements OnInit {
   cardBoxData(task: any): void {
 
     const tasks = this.cardsList.find(x => x.status === task.name);
-    console.log(tasks,"taskssssssssss")
+    console.log(tasks, "taskssssssssss")
     task.value.dueDate = new Date(task.value.dueDate).toDateString();
     tasks.info.push(task.value);
 
   }
 }
+
+
+
+
+
