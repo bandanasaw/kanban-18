@@ -1,6 +1,7 @@
 import { Component, EventEmitter, input, OnInit, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from '../api.service';
 // import { CardBoxComponent } from '../card-box/card-box.component';
 
 @Component({
@@ -10,6 +11,9 @@ import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
     styleUrl: './card-options.component.css'
 })
 export class CardOptionsComponent implements OnInit {
+
+  constructor(private apiService: ApiService){}
+
   readonly cardDetail = input<any>();
   // @Input() cardDeleted : any
 
@@ -21,6 +25,7 @@ export class CardOptionsComponent implements OnInit {
   faPenAlt = faPenAlt;
   faTrash = faTrashAlt;
 
+
   ngOnInit(): void {
     // console.log(this.cardDeleted, '---------------')
   }
@@ -28,9 +33,10 @@ export class CardOptionsComponent implements OnInit {
     this.edit.emit();
   }
 
-  deleteCard(index: number): void {
+  deleteCard(index: number) {
     this.cardDeleted.emit(index);
     // this.cardDeleted.emit(id); 
+   
 
   }
   moveToOnHold(){

@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private baseUrl = 'http://localhost:3000'; 
-  private getDataURL='api/data'
+  private getDataURL='api/data';
+  private deleteDataURL = 'api/data';
+  private postDataURL = 'api/data';
 
   constructor(private http: HttpClient) {}
 
@@ -18,8 +20,8 @@ export class ApiService {
   }
 
   // POST request
-  postData(endpoint: string, data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/${endpoint}`, data);
+  postData( data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/${this.postDataURL}`, data);
   }
 
   // PUT request
@@ -28,8 +30,8 @@ export class ApiService {
   }
 
   // DELETE request
-  deleteData(endpoint: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${endpoint}`);
+  deleteData(): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${this.deleteDataURL}`);
   }
 }
 

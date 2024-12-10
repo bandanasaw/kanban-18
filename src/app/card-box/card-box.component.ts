@@ -3,6 +3,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTasks, faClock, faFlag, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { CardOptionsComponent } from "../card-options/card-options.component";
 import { FormsModule } from '@angular/forms';
+import { ApiService } from '../api.service';
 
 @Component({
     selector: 'app-card-box',
@@ -12,8 +13,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class CardBoxComponent implements OnInit{
 
+  constructor(private apiService: ApiService) {}
+
   readonly cardDetail = input<any>();
-  readonly card = input<any>();
+   card = input<any>();
 
   faTasks = faTasks;
   faTimesCircle = faClock;
@@ -28,7 +31,9 @@ export class CardBoxComponent implements OnInit{
   // task = signal<any[]>([]);
  
   ngOnInit(): void {
-    // console.log(this.cardDetail)
+    // console.log(this.cardDetail())
+    // console.log(this.card().info)
+
   }
 
   onclick(e: any): void {
@@ -55,10 +60,24 @@ export class CardBoxComponent implements OnInit{
     this.showEditButton.set(false);
   }
 
-  onCardDeleted(index: number): void {
+  onCardDeleted(index: number){
+    
     this.card().info.splice(index, 1);
+    // this.apiService.deleteData().subscribe({
+    //   next: () => {
+    //     console.log(`Item at index ${index} deleted successfully`)
+    //     this.card().info.splice(index, 1);
+       
+    //     // this.card = response.data.info;
+    //     // response.data.info.splice(index, 1);
+    //     // console.log('Data deleted successfully:', response);
+    //   },
+    //   error: (error) => {
+    //     console.error('Error deleting data:', error);
+    //   },
+    // });
   }
-
+ 
   onEdit() {
     this.isEditButtonClick.set(false);
   }
